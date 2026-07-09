@@ -52,9 +52,17 @@ test('type into an iframe editor', async ({ page }) => {
   await page.goto(`${BASE}/iframe`);
   const frame = page.frameLocator('#mce_0_ifr');
   const body = frame.locator('#tinymce');
+
+  // wait until the editor body is actually attached/visible inside the frame
+  await expect(body).toBeVisible();
+
+  // clear existing placeholder text, then type
   await body.click();
-  await body.fill('Automation testing is fun');
-  await expect(body).toContainText('Automation testing is fun');
+  await page.keyboard.press('ControlOrMeta+A');
+  await page.keyboard.press('Delete');
+  await page.keyboard.type('Automation testing is fun');
+
+  await expect(body).toHaveText('Automation testing is fun');
 });
 
 // 7. Hovering to reveal hidden content
