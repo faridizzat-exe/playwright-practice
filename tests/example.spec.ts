@@ -41,4 +41,4 @@ test('checkbox can be checked', async ({ page }) => {
   await expect(secondCheckbox).not.toBeChecked();
 });
 
-// trigger run
+//testing Playwright test

@@ -74,3 +74,5 @@ test('read data from a table', async ({ page }) => {
   const firstRowLastName = table.locator('tbody tr').first().locator('td').first();
   await expect(firstRowLastName).toHaveText('Smith');
 });
+
+//testing Playwright test
